@@ -6,26 +6,20 @@ kbg='#0f0f1f'
 g1='#284d40'
 g2='#2c635a'
 g3='#2d6666'
-g4='#44803e'
+g4='#3f5e26'
 
 # reds
-r1='#9c3232'
+r1='#a33c3c'
 
 # yellows
 y1='#fff717'
 
 # browns
-b1='#4f4e3a'
-# b2='#6b5c4c'
-b2='#59b550'
+b1='#423c32'
 
 clock="%T"
 cwd="%c"
 command_line="%F{$kfg} ☰ %f"
-
-# branch="%F{$b2}─%f"
-# arc1="%F{$b2}┌%f"
-# arc2="%F{$b2}└%f"
 
 LC=$'\Ue0b6'
 RC=$'\Ue0b4'
@@ -33,15 +27,15 @@ RC=$'\Ue0b4'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 connector () {
-    echo "%F{$pf}─%f"
+    echo "%F{$pf}━%f"
 }
 
 arc1 () {
-    echo "%F{$pf}┌%f"
+    echo "%F{$pf}┏%f"
 }
 
 arc2 () {
-    echo "%F{$pf}└%f"
+    echo "%F{$pf}┗%f"
 }
 
 start_time () {
@@ -55,18 +49,18 @@ calc_time () {
     fi
 }
 
-blake_pass_fail () {
+forest_pass_fail () {
     if [[ $? == 0 ]]; then
-        pf=$g4
+        pf=$b1
     else
         pf=$r1
     fi
 }
 
 preexec_functions=(start_time)
-precmd_functions=(calc_time blake_pass_fail)
+precmd_functions=(calc_time forest_pass_fail)
 
-blake_timer () {
+forest_timer () {
     if [[ $secs > 1 ]]; then
         t="$(printf '%dd %dh %dm %ds\n' $(($secs/86400)) $(($secs%86400/3600)) $(($secs%3600/60)) $(($secs%60)))"
         if [[ $t[1] -eq 0 ]]; then
@@ -78,11 +72,11 @@ blake_timer () {
                 fi
             fi
         fi
-        echo "$(connector)%F{$b1}$LC%f%F{$kfg}%K{$b1} $t %k%f%F{$b1}$RC%f"
+        echo "$(connector)%F{$g4}$LC%f%F{$kfg}%K{$g4} $t %k%f%F{$g4}$RC%f"
     fi
 }
 
-blake_clock () {
+forest_clock () {
     dt="$(date +'%H')"
     if [[ dt -gt 11 ]]; then
         suf='PM'
@@ -99,11 +93,11 @@ blake_clock () {
     echo "$tim $suf"
 }
 
-blake_cwd () {
+forest_cwd () {
     echo "${PWD/#$HOME/~}" | rev | cut -d "/" -f1 -f2 | rev
 }
 
-blake_git () {
+forest_git () {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         local g_status g_out=''
         branch="$(git branch --show-current)"
@@ -184,17 +178,14 @@ blake_git () {
     fi
 }
 
-blake_venv () {
+forest_venv () {
     if [[ -n $VIRTUAL_ENV ]]; then
         echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} ☉ $(basename $VIRTUAL_ENV) %k%f%F{$g3}$RC%f"
     fi
 }
 
-blake_info="%F{$g1}$LC%f%F{$kfg}%K{$g1} \$(blake_clock) ⁜ \$(blake_cwd) %k%f%F{$g1}$RC%f"
+forest_info="%F{$g1}$LC%f%F{$kfg}%K{$g1} \$(forest_clock) ⁜ \$(forest_cwd) %k%f%F{$g1}$RC%f"
 
 PROMPT="
-\$(arc1)$blake_info\$(blake_git)\$(blake_venv)\$(blake_timer)
+\$(arc1)$forest_info\$(forest_git)\$(forest_venv)\$(forest_timer)
 \$(arc2)$command_line"
-
-# TO ADD
-# command pass/fail status
