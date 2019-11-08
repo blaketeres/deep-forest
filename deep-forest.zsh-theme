@@ -171,10 +171,10 @@ forest_git () {
         fi
 
         if [[ -n $g_out ]]; then
-            g_out="%F{$y1}[$g_out]%f"
+            g_out=" %F{$y1}[$g_out]%f"
         fi
 
-        echo "$(connector)%F{$g2}$LC%f%F{$kfg}%K{$g2}   $branch $g_out %k%f%F{$g2}$RC%f"
+        echo "$(connector)%F{$g2}$LC%f%F{$kfg}%K{$g2}   $branch$g_out %k%f%F{$g2}$RC%f"
     fi
 }
 
