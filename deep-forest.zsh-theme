@@ -100,7 +100,12 @@ forest_cwd () {
 forest_git () {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         local g_status g_out=''
-        branch="$(git branch --show-current)"
+        branch="$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)"
+
+        if [[ $branch == "HEAD" ]]; then
+            branch="HEAD ($(git rev-parse --short HEAD))"
+        fi
+
         g_status=$(command git status --porcelain 2> /dev/null)
 
         # check for untracked
