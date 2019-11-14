@@ -10,6 +10,7 @@ g4='#3f5e26'
 
 # reds
 r1='#a33c3c'
+r2='#f57373'
 
 # yellows
 y1='#fff717'
