@@ -6,7 +6,6 @@ kbg='#0f0f1f'
 g1='#284d40'
 g2='#2c635a'
 g3='#2d6666'
-g4='#3f5e26'
 
 # reds
 r1='#a33c3c'
@@ -28,11 +27,11 @@ RC=$'\Ue0b4'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 connector () {
-    echo "%F{$pf}━%f"
+    echo "%F{$pf}━━%f"
 }
 
 arc1 () {
-    echo "%F{$pf}┏%f"
+    echo "%F{$pf}┏━%f"
 }
 
 arc2 () {
@@ -73,7 +72,7 @@ forest_timer () {
                 fi
             fi
         fi
-        echo "$(connector)%F{$g4}$LC%f%F{$kfg}%K{$g4} $t %k%f%F{$g4}$RC%f"
+        echo "$(connector)%F{$b1}$LC%f%F{$kfg}%K{$b1} $t %k%f%F{$b1}$RC%f"
     fi
 }
 
