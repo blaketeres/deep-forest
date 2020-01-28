@@ -21,8 +21,8 @@ clock="%T"
 cwd="%c"
 command_line="%F{$kfg} ☰ %f"
 
-LC=$'\Ue0b6'
-RC=$'\Ue0b4'
+# LC=$'\Ue0b6'
+# RC=$'\Ue0b4'
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
