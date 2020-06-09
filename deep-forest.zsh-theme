@@ -19,7 +19,7 @@ b1='#423c32'
 
 clock="%T"
 cwd="%c"
-command_line="%F{$kfg} ☰  %f"
+command_line="%F{$kfg} ☰ %f"
 
 # LC=$'\Ue0b6'
 # RC=$'\Ue0b4'
