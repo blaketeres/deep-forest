@@ -184,8 +184,11 @@ forest_git () {
 }
 
 forest_venv () {
+    version="$(python --version)"
     if [[ -n $VIRTUAL_ENV ]]; then
-        echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} ☉ $(basename $VIRTUAL_ENV) %k%f%F{$g3}$RC%f"
+        echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} $(basename $VIRTUAL_ENV) ꥟ $version %k%f%F{$g3}$RC%f"
+    else
+        echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} ꥟ $version %k%f%F{$g3}$RC%f"
     fi
 }
 
