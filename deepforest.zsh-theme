@@ -94,7 +94,7 @@ forest_clock () {
 }
 
 forest_cwd () {
-    echo "${PWD/#$HOME/~}" | rev | cut -d "/" -f1 -f2 | rev
+    echo "${PWD/#$HOME/~}" | rev | cut -d "/" -f1 | cut -f2 | rev
 }
 
 forest_git () {
