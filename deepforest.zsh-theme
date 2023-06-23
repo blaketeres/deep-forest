@@ -140,9 +140,9 @@ forest_itasca_env () {
     if [[ -v nobel && -v desoto ]]; then
         echo "$(connector)$c_nobel1 $nobel $c_nobel2$c_desoto1 $desoto $c_desoto2"
     elif [[ -v nobel ]]; then
-        echo "$(connector) $nobel"
+        echo "$(connector)$c_nobel1 $nobel $c_nobel2"
     elif [[ -v desoto ]]; then
-        echo "$(connector) $desoto"
+        echo "$(connector)$c_desoto1 $desoto $c_desoto2"
     fi
 }
 
@@ -237,7 +237,7 @@ forest_venv () {
     if [[ -n $VIRTUAL_ENV ]]; then
         echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} $(basename $VIRTUAL_ENV) ꥟ $version %k%f%F{$g3}$RC%f"
     else
-        echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} ꥟ $version $(forest_itasca_env) %k%f%F{$g3}$RC%f"
+        echo "$(connector)%F{$g3}$LC%f%F{$kfg}%K{$g3} ꥟ $version %k%f%F{$g3}$RC%f"
     fi
 }
 
