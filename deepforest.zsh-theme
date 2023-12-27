@@ -120,29 +120,9 @@ forest_itasca_env () {
         fi
         nobel="nobel ▤ $NOBEL_ENV"
     fi
-    if [[ -v DESOTO_ENV ]]; then
-        if [[ $DESOTO_ENV == "production" ]]; then
-            c_desoto1="%F{$r3}$LC%f%F{$kfg}%K{$r3}"
-            c_desoto2="%k%f%F{$r3}$RC%f"
-        elif [[ $DESOTO_ENV == "staging" ]]; then
-            c_desoto1="%F{$b2}$LC%f%F{$kfg}%K{$b2}"
-            c_desoto2="%k%f%F{$b2}$RC%f"
-        elif [[ $DESOTO_ENV == "development" ]]; then
-            c_desoto1="%F{$bl1}$LC%f%F{$kfg}%K{$bl1}"
-            c_desoto2="%k%f%F{$bl1}$RC%f"
-        elif [[ $DESOTO_ENV == "local" ]]; then
-            c_desoto1="%F{$g4}$LC%f%F{$kfg}%K{$g4}"
-            c_desoto2="%k%f%F{$g4}$RC%f"
-        fi
-        desoto="desoto ▤ $DESOTO_ENV"
-    fi
 
-    if [[ -v nobel && -v desoto ]]; then
-        echo "$(connector)$c_nobel1 $nobel $c_nobel2$c_desoto1 $desoto $c_desoto2"
-    elif [[ -v nobel ]]; then
+    if [[ -v nobel ]]; then
         echo "$(connector)$c_nobel1 $nobel $c_nobel2"
-    elif [[ -v desoto ]]; then
-        echo "$(connector)$c_desoto1 $desoto $c_desoto2"
     fi
 }
 
